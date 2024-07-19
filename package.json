@@ -1,10 +1,10 @@
 {
-  "name": "@react-native-voice/voice",
+  "name": "@react-native-oh-tpl/voice",
   "description": "React Native Native Voice library for iOS and Android",
-  "version": "3.2.4",
+  "version": "3.2.4-0.0.1",
   "author": "Sam Wenke <samwenke@gmail.com>",
   "private": false,
-  "homepage": "https://github.com/react-native-voice/voice",
+  "homepage": "https://github.com/react-native-oh-library/voice",
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.7",
     "@semantic-release/git": "^9.0.0",
@@ -18,38 +18,42 @@
     "semantic-release": "^17.0.4",
     "typescript": "3.8.3"
   },
+  "harmony": {
+    "alias": "@react-native-voice/voice",
+    "codegenConfig": {
+      "specPaths": [
+        "./src"
+      ]
+    }
+  },
   "keywords": [
     "android",
     "ios",
     "react-native",
     "speech",
-    "voice"
+    "voice",
+    "harmony"
   ],
+  "codegenConfig": {
+    "name": "RTNVoiceSpec",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.voice"
+    }
+  },
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "peerDependencies": {
     "react-native": ">= 0.60.2"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-native-voice/voice.git"
-  },
-  "scripts": {
-    "lint": "eslint src/*",
-    "semantic-release": "semantic-release",
-    "start": "yarn --cwd example start",
-    "ios": "yarn --cwd example ios",
-    "android": "yarn --cwd example android",
-    "prepare": "yarn build && yarn build:plugin",
-    "build": "tsc",
-    "dev-sync": "cp -r ./dist example/node_modules/@react-native-voice/voice",
-    "type-check": "tsc -noEmit",
-    "build:plugin": "tsc --build plugin",
-    "lint:plugin": "eslint plugin/src/*"
+    "url": "git://github.com/react-native-oh-library/voice.git"
   },
   "dependencies": {
     "invariant": "^2.2.4",
-    "@expo/config-plugins": "^2.0.0"
+    "@expo/config-plugins": "^2.0.0",
+    "@react-native-voice/voice": "3.2.4"
   }
 }
