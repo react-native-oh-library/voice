@@ -6,8 +6,6 @@
 
 [中文 / Chinese](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/voice.md)
 
-[英文 / English](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-en/voice.md)
-
 ## Codegen
 
 该库已接入 codegen，具体请查阅文档。

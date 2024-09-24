@@ -212,8 +212,7 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
       audioInfo: audioInfo,
       extraParams: extraParams
     }
-
-    // 调用开始识别方法
+    //调用开始识别方法
     this.asrEngine.startListening(recognizerParams);
   };
 
