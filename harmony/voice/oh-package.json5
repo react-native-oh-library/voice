@@ -1,6 +1,6 @@
 {
   name: '@react-native-oh-tpl/voice',
-  version: '3.2.4-0.0.2',
+  version: '3.2.4-0.0.3',
   description: 'Please describe the basic information.',
   main: 'index.ets',
   author: '',
