@@ -66,9 +66,10 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
   async stopSpeech(callback: (error: string) => void) {
     try {
       this.asrEngine.finish(this.sessionId);
-      this.onSpeechEndEvent({ 'error': false });
+      this.onSpeechEndEvent({ 'sessionId': this.sessionId });
       this.ifRecognizing = false;
     } catch (err) {
+      this.onSpeechEndEvent({ 'error': err });
       callback(JSON.stringify(err));
     }
   }
@@ -76,9 +77,10 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
   cancelSpeech(callback: (error: string) => void): void {
     try {
       this.asrEngine.cancel(this.sessionId);
-      this.onSpeechEndEvent({ 'error': false });
+      this.onSpeechEndEvent({ 'sessionId': this.sessionId });
       this.ifRecognizing = false;
     } catch (err) {
+      this.onSpeechEndEvent({ 'error': err });
       callback(JSON.stringify(err));
     }
   }
@@ -154,13 +156,13 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
       // 开始识别成功回调
       onStart(sessionId: string, eventMessage: string) {
         voiceTurboModule.ifRecognizing = true;
-        voiceTurboModule.onSpeechStartEvent({ 'error': false });
+        voiceTurboModule.onSpeechStartEvent(`sessionId: ${sessionId} eventMessage: ${eventMessage}`);
         Logger.info(TAG, `onStart, sessionId: ${sessionId} eventMessage: ${eventMessage}`);
       },
       // 事件回调
       onEvent(sessionId: string, eventCode: number, eventMessage: string) {
         if (1 == eventCode) {
-          voiceTurboModule.onSpeechRecognizedEvent({ "error": false })
+          voiceTurboModule.onSpeechRecognizedEvent(`onEvent, sessionId: ${sessionId} eventCode: ${eventCode} eventMessage: ${eventMessage}`)
         }
         Logger.info(TAG, `onEvent, sessionId: ${sessionId} eventCode: ${eventCode} eventMessage: ${eventMessage}`);
       },
@@ -181,7 +183,7 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
       // 错误回调，错误码通过本方法返回
       onError(sessionId: string, errorCode: number, errorMessage: string) {
         const error = { 'message': errorMessage, 'code': errorCode };
-        voiceTurboModule.onSpeechErrorEvent({ 'error': error });
+        voiceTurboModule.onSpeechErrorEvent({ 'message': errorMessage, 'code': errorCode });
         Logger.error(TAG, `onError, sessionId: ${sessionId} errorCode: ${errorCode} errorMessage: ${errorMessage}`);
       },
     }
@@ -212,8 +214,7 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
       audioInfo: audioInfo,
       extraParams: extraParams
     }
-
-    // 调用开始识别方法
+    //调用开始识别方法
     this.asrEngine.startListening(recognizerParams);
   };
 
