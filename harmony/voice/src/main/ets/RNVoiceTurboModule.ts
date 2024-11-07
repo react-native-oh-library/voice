@@ -58,8 +58,8 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
       Logger.info(TAG,
         `data: ${JSON.stringify(data)}, data permissions: ${data.permissions}, data authResults: ${data.authResults}`);
     }).catch((err: BusinessError) => {
-      callback(JSON.stringify(err));
-      Logger.info(TAG, 'data:' + JSON.stringify(err));
+      callback( JSON.stringify(err))
+      Logger.info(TAG, 'data:'+err);
     });
   }
 
@@ -68,8 +68,9 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
       this.asrEngine.finish(this.sessionId);
       this.onSpeechEndEvent({ 'sessionId': this.sessionId });
       this.ifRecognizing = false;
+      callback(undefined);
     } catch (err) {
-      this.onSpeechEndEvent({ 'error': err });
+      this.onSpeechEndEvent({ 'err': err });
       callback(JSON.stringify(err));
     }
   }
@@ -79,6 +80,7 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
       this.asrEngine.cancel(this.sessionId);
       this.onSpeechEndEvent({ 'sessionId': this.sessionId });
       this.ifRecognizing = false;
+      callback(undefined);
     } catch (err) {
       this.onSpeechEndEvent({ 'error': err });
       callback(JSON.stringify(err));
@@ -89,6 +91,7 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
     try {
       this.asrEngine.shutdown();
       this.ifRecognizing = false;
+      callback(undefined);
     } catch (err) {
       callback(JSON.stringify(err));
     }
@@ -138,6 +141,7 @@ export class RNVoiceTurboModule extends TurboModule implements TM.VoiceNativeMod
         this.asrEngine = speechRecognitionEngine;
         // 启动语音识别
         this.startListening();
+        callback(undefined);
       } else {
         // 无法创建引擎时返回错误码1002200001，原因：语种不支持、模式不支持、初始化超时、资源不存在等导致创建引擎失败
         // 无法创建引擎时返回错误码1002200006，原因：引擎正在忙碌中，一般多个应用同时调用语音识别引擎时触发
