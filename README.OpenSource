@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "react-native-voice",
+        "License": "MIT License",
+        "License File": "https://github.com/react-native-voice/voice/blob/master/LICENSE",
+        "Version Number": "3.2.4",
+        "Owner" : "xiafeng@huawei.com",
+        "Upstream URL": "https://github.com/react-native-voice",
+        "Description": "voice library for react-native"
+    }
+]
