@@ -1,17 +1,13 @@
-# react-native-oh-library/voice
+#  迁移声明
 
-本项目基于 [react-native-voice/voice](https://github.com/react-native-voice/voice)
+- 本仓库已迁移至 GitCode：[OpenHarmony-SIG/rntpc_voice](https://gitcode.com/openharmony-sig/rntpc_voice)。
+- 包名已更改为 `@react-native-ohos/voice`，支持直接从 npm 下载。
+- 更多详情请查阅新仓库的 README 文件。
+- 本仓库旧版本的文档已归档：[链接](/doc/zh-cn.md)
 
-## 文档地址 / Documentation URL
+# Migration Announcement
 
-[中文 / Chinese](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/voice.md)
-
-[英文 / English](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-en/voice.md)
-
-## Codegen
-
-该库已接入 codegen，具体请查阅文档。
-
-## 请悉知 / Acknowledgements
-
-本项目基于 [The MIT License (MIT)](https://github.com/react-native-voice/voice/blob/master/LICENSE) ，请自由地享受和参与开源。
+- This repository has been migrated to GitCode：[OpenHarmony-SIG/rntpc_voice](https://gitcode.com/openharmony-sig/rntpc_voice)       
+- The package name has been changed to `@react-native-ohos/voice` and is now available for direct download from npm.
+- For more details, please refer to the README in the new repository.
+- Archived documentation for versions in this repository can be found here: [Link](/doc/en.md)
